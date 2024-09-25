@@ -1,0 +1,16 @@
+services:
+  db:
+    image: "postgres:${POSTGRES_TAG}"
+    container_name: "${PROJECT_NAME}-database"
+    environment:
+      POSTGRES_DB: $POSTGRES_DATABASE
+      POSTGRES_USER: $POSTGRES_USER
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+    ports:
+      - "${POSTGRES_PORT}:5432"
+
+  cache:
+    image: "redis:${REDIS_TAG}"
+    container_name: "${PROJECT_NAME}-cache"
+    ports:
+      - "${REDIS_PORT}:6379"

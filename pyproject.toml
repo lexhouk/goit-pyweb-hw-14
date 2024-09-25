@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "goit-pyweb-hw-13-task-1"
+version = "0.3.0"
+description = "Contacts API based on FastAPI."
+authors = ["Oleksandr Horbatiuk <oleksandr.v.horbatiuk@gmail.com>"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.112.2"
+uvicorn = {extras = ["standard"], version = "^0.30.6"}
+pydantic = {extras = ["email"], version = "^2.8.2"}
+sqlalchemy = "^2.0.32"
+asyncpg = "^0.29.0"
+alembic = "^1.13.2"
+passlib = {extras = ["bcrypt"], version = "^1.7.4"}
+python-jose = {extras = ["cryptography"], version = "^3.3.0"}
+python-dotenv = "^1.0.1"
+fastapi-mail = "^1.4.1"
+python-multipart = "^0.0.9"
+fastapi-limiter = "^0.1.6"
+cloudinary = "^1.41.0"
+bcrypt = "4.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
