@@ -17,6 +17,13 @@ from src.services.environment import environment
 
 @asynccontextmanager
 async def launch(app: FastAPI):
+    '''
+    Connecting the cache to the system for determining limits on the number of requests.
+
+    :param app: Application object.
+    :type app: FastAPI
+    '''
+
     cache = await InitRedis(
         **environment('REDIS', True, True),
         db=0,
@@ -44,6 +51,15 @@ app.include_router(users_router, prefix='/api')
 
 @app.get('/api/healthchecker', tags=['Status'])
 async def root(db: AsyncSession = Depends(get_db)) -> dict:
+    '''
+    Endpoint for determining application readiness.
+
+    :param db: Database connection.
+    :type db: AsyncSession
+    :return: Welcome message when ready. Otherwise, an error message is displayed.
+    :rtype: dict
+    '''
+
     try:
         if not await db.execute(text('SELECT 1')):
             raise HTTPException(

@@ -16,6 +16,14 @@ documentation for details.
    :caption: Contents:
 
 
+Contacts API main
+===================
+.. automodule:: main
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+
 Contacts API repository Users
 ======================================
 .. automodule:: src.repository.users
