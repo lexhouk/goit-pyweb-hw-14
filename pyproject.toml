@@ -1,6 +1,6 @@
 [tool.poetry]
-name = "goit-pyweb-hw-13-task-1"
-version = "0.3.0"
+name = "goit-pyweb-hw-14"
+version = "0.4.0"
 description = "Contacts API based on FastAPI."
 authors = ["Oleksandr Horbatiuk <oleksandr.v.horbatiuk@gmail.com>"]
 readme = "README.md"
@@ -23,6 +23,9 @@ fastapi-limiter = "^0.1.6"
 cloudinary = "^1.41.0"
 bcrypt = "4.0.1"
 
+
+[tool.poetry.group.dev.dependencies]
+sphinx = "^8.0.2"
 
 [build-system]
 requires = ["poetry-core"]

@@ -1,10 +1,22 @@
 # Contacts API
 
+## Development
+
+```bash
+$ sphinx-quickstart docs
+$ python -m pip freeze > requirements.txt
+$ ./build.sh
+$ cd docs/_build/html
+$ python -m http.server
+```
+
+Go to http://localhost:8000.
+
 ## Deployment
 
 ```bash
-$ git clone https://github.com/lexhouk/goit-pyweb-hw-13-task-1.git
-$ cd goit-pyweb-hw-13-task-1
+$ git clone https://github.com/lexhouk/goit-pyweb-hw-14.git
+$ cd goit-pyweb-hw-14
 $ poetry install
 $ docker compose up -d
 $ alembic upgrade head

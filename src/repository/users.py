@@ -10,6 +10,17 @@ async def create(
     body: UserRequest,
     db: AsyncSession = Depends(get_db)
 ) -> Response:
+    '''
+    Add new user.
+
+    :param body: The user request object.
+    :type body: UserRequest
+    :param db: The asynchrone database session object as dependency.
+    :type db: AsyncSession
+    :return: The user response object.
+    :rtype: Response
+    '''
+
     user = User(email=body.username, password=body.password)
 
     db.add(user)
