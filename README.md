@@ -9,6 +9,7 @@ $ docker compose up -d
 $ docker exec -it lexhouk-hw-14-documentation make -C docs html
 $ cd docs/_build/html
 $ python -m http.server
+$ python -m unittest discover -s tests -p "*.py"
 ```
 
 Go to http://localhost:8000.
