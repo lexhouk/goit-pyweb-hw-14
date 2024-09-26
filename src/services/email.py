@@ -9,6 +9,23 @@ from .environment import environment
 
 
 async def send(address: EmailStr, subject: str, host: str, type: str) -> None:
+    '''
+    Send an email to the specified address.
+
+    :param address: The e-mail address to which the letter should be sent.
+    :type address: EmailStr
+    :param subject: A brief description of the letter that is used as its
+        header.
+    :type subject: str
+    :param host: The domain name or IP address from which this application is
+        available. This value is used to substitute in references to
+        application endpoints or its static files.
+    :type host: str
+    :param type: The part of the endpoint path or email template name prefix
+        that defines the destination of both.
+    :type type: str
+    '''
+
     TOKEN = await auth_service.create_token(address, expire=True)
 
     config = ConnectionConfig(

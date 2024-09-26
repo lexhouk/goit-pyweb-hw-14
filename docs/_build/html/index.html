@@ -63,12 +63,177 @@ documentation for details.</p>
 <dd class="field-odd"><p><strong>db</strong> (<em>AsyncSession</em>) – Database connection.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Welcome message when ready. Otherwise, an error message is displayed.</p>
+<dd class="field-even"><p>Welcome message when ready. Otherwise, an error message is
+displayed.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>dict</p>
 </dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>HTTPException</strong> – If the connection to the database failed due to
+invalid accesses being provided or for some other reason (for example,
+the server is not running).</p>
+</dd>
 </dl>
+</dd></dl>
+
+</section>
+<section id="module-src.database">
+<span id="contacts-api-database"></span><h1>Contacts API database<a class="headerlink" href="#module-src.database" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.database.Base">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.database.</span></span><span class="sig-name descname"><span class="pre">Base</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.database.Base" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">DeclarativeBase</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.database.Base.metadata">
+<span class="sig-name descname"><span class="pre">metadata</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">MetaData</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">MetaData()</span></em><a class="headerlink" href="#src.database.Base.metadata" title="Link to this definition">¶</a></dt>
+<dd><p>Refers to the <code class="xref py py-class docutils literal notranslate"><span class="pre">_schema.MetaData</span></code> collection that will be used
+for new <code class="xref py py-class docutils literal notranslate"><span class="pre">_schema.Table</span></code> objects.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><span class="xref std std-ref">orm_declarative_metadata</span></p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.database.Base.registry">
+<span class="sig-name descname"><span class="pre">registry</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">_RegistryType</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;sqlalchemy.orm.decl_api.registry</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#src.database.Base.registry" title="Link to this definition">¶</a></dt>
+<dd><p>Refers to the <code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.registry</span></code> in use where new
+<code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.Mapper</span></code> objects will be associated.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="src.database.Contact">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.database.</span></span><span class="sig-name descname"><span class="pre">Contact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.database.Contact" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#src.database.Base" title="src.database.Base"><code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.database.Contact.bio">
+<span class="sig-name descname"><span class="pre">bio</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#src.database.Contact.bio" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.database.Contact.birthday">
+<span class="sig-name descname"><span class="pre">birthday</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#src.database.Contact.birthday" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.database.Contact.email">
+<span class="sig-name descname"><span class="pre">email</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#src.database.Contact.email" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.database.Contact.first_name">
+<span class="sig-name descname"><span class="pre">first_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#src.database.Contact.first_name" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.database.Contact.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#src.database.Contact.id" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.database.Contact.last_name">
+<span class="sig-name descname"><span class="pre">last_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#src.database.Contact.last_name" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.database.Contact.phone_number">
+<span class="sig-name descname"><span class="pre">phone_number</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#src.database.Contact.phone_number" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.database.Contact.user">
+<span class="sig-name descname"><span class="pre">user</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#src.database.User" title="src.database.User"><span class="pre">User</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#src.database.Contact.user" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.database.Contact.user_id">
+<span class="sig-name descname"><span class="pre">user_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#src.database.Contact.user_id" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="src.database.User">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.database.</span></span><span class="sig-name descname"><span class="pre">User</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.database.User" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#src.database.Base" title="src.database.Base"><code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.database.User.avatar">
+<span class="sig-name descname"><span class="pre">avatar</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#src.database.User.avatar" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.database.User.email">
+<span class="sig-name descname"><span class="pre">email</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#src.database.User.email" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.database.User.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#src.database.User.id" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.database.User.password">
+<span class="sig-name descname"><span class="pre">password</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#src.database.User.password" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.database.User.token">
+<span class="sig-name descname"><span class="pre">token</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#src.database.User.token" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.database.User.verified">
+<span class="sig-name descname"><span class="pre">verified</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapped</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#src.database.User.verified" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.database.get_db">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.database.</span></span><span class="sig-name descname"><span class="pre">get_db</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db_init</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Depends(init_db_once)</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">AsyncGenerator</span><span class="p"><span class="pre">[</span></span><span class="pre">AsyncSession</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#src.database.get_db" title="Link to this definition">¶</a></dt>
+<dd><p>Granting access to a database to execute a single set of queries.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>db_init</strong> (<em>Any</em>) – Setting up the connection to the database.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A session for working with the database.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AsyncGenerator[AsyncSession, None]</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>HTTPException</strong> – If session creation failed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.database.init_db">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.database.</span></span><span class="sig-name descname"><span class="pre">init_db</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#src.database.init_db" title="Link to this definition">¶</a></dt>
+<dd><p>Creation of tables in the database based on defined entity models.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>HTTPException</strong> – If the tables could not be created.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.database.init_db_once">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.database.</span></span><span class="sig-name descname"><span class="pre">init_db_once</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#src.database.init_db_once" title="Link to this definition">¶</a></dt>
+<dd><p>Making all the necessary settings, at the beginning of the application,
+necessary for working with the database.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.database.init_engine">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.database.</span></span><span class="sig-name descname"><span class="pre">init_engine</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#src.database.init_engine" title="Link to this definition">¶</a></dt>
+<dd><p>Establishing a connection to a particular type of database server and
+checking its capabilities is done before it is requested.</p>
 </dd></dl>
 
 </section>
@@ -81,13 +246,15 @@ documentation for details.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>email</strong> (<em>str</em>) – The e-mail address of the user whose avatar needs to be specified.</p></li>
+<li><p><strong>email</strong> (<em>str</em>) – The e-mail address of the user whose avatar needs to be
+specified.</p></li>
 <li><p><strong>url</strong> (<em>str</em>) – The web address of the image that represents the user’s image.</p></li>
 <li><p><strong>db</strong> (<em>AsyncSession</em>) – Database connection.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The entity of a particular user if the user was successfully found at the specified email address.</p>
+<dd class="field-even"><p>The entity of a particular user if the user was successfully found
+at the specified email address.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Response</p>
@@ -107,7 +274,8 @@ documentation for details.</p>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The part of the created entity that contains the ID and email address.</p>
+<dd class="field-even"><p>The part of the created entity that contains the ID and email
+address.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Response</p>
@@ -117,18 +285,19 @@ documentation for details.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="src.repository.users.update">
-<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.repository.users.</span></span><span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">User</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AsyncSession</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">revoke</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">TokenSchema</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#src.repository.users.update" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.repository.users.</span></span><span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.database.User" title="src.database.User"><span class="pre">User</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AsyncSession</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">revoke</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">TokenSchema</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#src.repository.users.update" title="Link to this definition">¶</a></dt>
 <dd><p>Making changes to one or more fields of an existing user.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>user</strong> (<em>User</em>) – A set of all fields from the user model for the database.</p></li>
+<li><p><strong>user</strong> (<a class="reference internal" href="#src.database.User" title="src.database.User"><em>User</em></a>) – A set of all fields from the user model for the database.</p></li>
 <li><p><strong>db</strong> (<em>AsyncSession</em>) – Database connection.</p></li>
 <li><p><strong>revoke</strong> (<em>bool</em>) – Indication that the refresh token must be reset.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The access and update token and their type if the entity was successfully updated.</p>
+<dd class="field-even"><p>The access and update token and their type if the entity was
+successfully updated.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>TokenSchema | None</p>
@@ -146,6 +315,209 @@ documentation for details.</p>
 <li><p><strong>email</strong> (<em>str</em>) – Email address of an existing user.</p></li>
 <li><p><strong>db</strong> (<em>AsyncSession</em>) – Database connection.</p></li>
 </ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-src.services.auth">
+<span id="contacts-api-service-auth"></span><h1>Contacts API service Auth<a class="headerlink" href="#module-src.services.auth" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.services.auth.Auth">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.services.auth.</span></span><span class="sig-name descname"><span class="pre">Auth</span></span><a class="headerlink" href="#src.services.auth.Auth" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="src.services.auth.Auth.create_token">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create_token</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">email</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.services.auth.Token" title="src.services.auth.Token"><span class="pre">Token</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expire</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#src.services.auth.Auth.create_token" title="Link to this definition">¶</a></dt>
+<dd><p>Generation of one of the types of tokens where the e-mail address,
+creation date and expiration date are used as the payload.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>email</strong> (<em>str</em>) – The email address used as part of the payload.</p></li>
+<li><p><strong>token</strong> (<a class="reference internal" href="#src.services.auth.Token" title="src.services.auth.Token"><em>Token</em></a>) – One of two common types of tokens (access token and
+refresh token) or an empty value for a non-standard token.</p></li>
+<li><p><strong>expire</strong> (<em>bool</em>) – True value for specifying the token’s validity period in
+days, otherwise in minutes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A string representation of the generated token.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.services.auth.Auth.decode_token">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">decode_token</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.services.auth.Token" title="src.services.auth.Token"><span class="pre">Token</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#src.services.auth.Auth.decode_token" title="Link to this definition">¶</a></dt>
+<dd><p>Extract the email address from the token string representation payload.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>token</strong> (<a class="reference internal" href="#src.services.auth.Token" title="src.services.auth.Token"><em>Token</em></a>) – The token from which you need to get information.</p></li>
+<li><p><strong>token</strong> – One of two common types of tokens (access token and
+refresh token) or an empty value for a non-standard token.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The email address is extracted from the token.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>HTTPException</strong> – If the token cannot be decoded with an incorrect
+structure or when the type of token specified in the payload is
+incorrect.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.services.auth.Auth.get_current_user">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_current_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(OAuth2PasswordBearer)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AsyncSession</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(get_db)</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Response</span></span></span><a class="headerlink" href="#src.services.auth.Auth.get_current_user" title="Link to this definition">¶</a></dt>
+<dd><p>Get the logged in user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>token</strong> (<em>str</em>) – The access token by which the user is searched.</p></li>
+<li><p><strong>db</strong> (<em>AsyncSession</em>) – Database connection.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The entity of the found user.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Response</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>HTTPException</strong> – If the token type does not match or the user
+with the email address contained in the token does not exist.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.services.auth.Auth.get_password_hash">
+<span class="sig-name descname"><span class="pre">get_password_hash</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#src.services.auth.Auth.get_password_hash" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.services.auth.Auth.get_user_by_email">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_user_by_email</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">email</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AsyncSession</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(get_db)</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Response</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#src.services.auth.Auth.get_user_by_email" title="Link to this definition">¶</a></dt>
+<dd><p>Get a model’s entity based on its email address.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>email</strong> (<em>str</em>) – The e-mail address of the owner of which you need to
+find.</p></li>
+<li><p><strong>db</strong> (<em>AsyncSession</em>) – Database connection.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The user entity, if one exists, with the specified email
+address.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Response | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.services.auth.Auth.oauth2_scheme">
+<span class="sig-name descname"><span class="pre">oauth2_scheme</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;fastapi.security.oauth2.OAuth2PasswordBearer</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#src.services.auth.Auth.oauth2_scheme" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.services.auth.Auth.verify_password">
+<span class="sig-name descname"><span class="pre">verify_password</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plain_password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hashed_password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#src.services.auth.Auth.verify_password" title="Link to this definition">¶</a></dt>
+<dd><p>Checking the correctness of the password.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>plain_password</strong> (<em>str</em>) – Password in the form in which it was entered by
+the user.</p></li>
+<li><p><strong>hashed_password</strong> (<em>str</em>) – Password as it is stored in the database.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the values ​​passed through the parameters are the same
+password.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="src.services.auth.Token">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.services.auth.</span></span><span class="sig-name descname"><span class="pre">Token</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.services.auth.Token" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.services.auth.Token.ACCESS">
+<span class="sig-name descname"><span class="pre">ACCESS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'access_token'</span></em><a class="headerlink" href="#src.services.auth.Token.ACCESS" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.services.auth.Token.REFRESH">
+<span class="sig-name descname"><span class="pre">REFRESH</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'refresh_token'</span></em><a class="headerlink" href="#src.services.auth.Token.REFRESH" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-src.services.email">
+<span id="contacts-api-service-e-mail"></span><h1>Contacts API service E-mail<a class="headerlink" href="#module-src.services.email" title="Link to this heading">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="src.services.email.send">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.services.email.</span></span><span class="sig-name descname"><span class="pre">send</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">EmailStr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subject</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#src.services.email.send" title="Link to this definition">¶</a></dt>
+<dd><p>Send an email to the specified address.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> (<em>EmailStr</em>) – The e-mail address to which the letter should be sent.</p></li>
+<li><p><strong>subject</strong> (<em>str</em>) – A brief description of the letter that is used as its
+header.</p></li>
+<li><p><strong>host</strong> (<em>str</em>) – The domain name or IP address from which this application is
+available. This value is used to substitute in references to
+application endpoints or its static files.</p></li>
+<li><p><strong>type</strong> (<em>str</em>) – The part of the endpoint path or email template name prefix
+that defines the destination of both.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-src.services.environment">
+<span id="contacts-api-service-environment"></span><h1>Contacts API service Environment<a class="headerlink" href="#module-src.services.environment" title="Link to this heading">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="src.services.environment.environment">
+<span class="sig-prename descclassname"><span class="pre">src.services.environment.</span></span><span class="sig-name descname"><span class="pre">environment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'POSTGRES_URL'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></span><a class="headerlink" href="#src.services.environment.environment" title="Link to this definition">¶</a></dt>
+<dd><p>Reads environment variables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – The full name of the environment variable or its beginning.</p></li>
+<li><p><strong>prefix</strong> (<em>bool</em>) – Indicates that the previous parameter is only part of the
+variable.</p></li>
+<li><p><strong>lower</strong> (<em>bool</em>) – Specifies that the result keys should be written in lowercase
+letters.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A set of environment variable values ​​if prefixed or a single
+environment variable is provided.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict | str</p>
 </dd>
 </dl>
 </dd></dl>
@@ -176,11 +548,70 @@ documentation for details.</p>
 <li><a class="reference internal" href="#main.root"><code class="docutils literal notranslate"><span class="pre">root()</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#module-src.database">Contacts API database</a><ul>
+<li><a class="reference internal" href="#src.database.Base"><code class="docutils literal notranslate"><span class="pre">Base</span></code></a><ul>
+<li><a class="reference internal" href="#src.database.Base.metadata"><code class="docutils literal notranslate"><span class="pre">Base.metadata</span></code></a></li>
+<li><a class="reference internal" href="#src.database.Base.registry"><code class="docutils literal notranslate"><span class="pre">Base.registry</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#src.database.Contact"><code class="docutils literal notranslate"><span class="pre">Contact</span></code></a><ul>
+<li><a class="reference internal" href="#src.database.Contact.bio"><code class="docutils literal notranslate"><span class="pre">Contact.bio</span></code></a></li>
+<li><a class="reference internal" href="#src.database.Contact.birthday"><code class="docutils literal notranslate"><span class="pre">Contact.birthday</span></code></a></li>
+<li><a class="reference internal" href="#src.database.Contact.email"><code class="docutils literal notranslate"><span class="pre">Contact.email</span></code></a></li>
+<li><a class="reference internal" href="#src.database.Contact.first_name"><code class="docutils literal notranslate"><span class="pre">Contact.first_name</span></code></a></li>
+<li><a class="reference internal" href="#src.database.Contact.id"><code class="docutils literal notranslate"><span class="pre">Contact.id</span></code></a></li>
+<li><a class="reference internal" href="#src.database.Contact.last_name"><code class="docutils literal notranslate"><span class="pre">Contact.last_name</span></code></a></li>
+<li><a class="reference internal" href="#src.database.Contact.phone_number"><code class="docutils literal notranslate"><span class="pre">Contact.phone_number</span></code></a></li>
+<li><a class="reference internal" href="#src.database.Contact.user"><code class="docutils literal notranslate"><span class="pre">Contact.user</span></code></a></li>
+<li><a class="reference internal" href="#src.database.Contact.user_id"><code class="docutils literal notranslate"><span class="pre">Contact.user_id</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#src.database.User"><code class="docutils literal notranslate"><span class="pre">User</span></code></a><ul>
+<li><a class="reference internal" href="#src.database.User.avatar"><code class="docutils literal notranslate"><span class="pre">User.avatar</span></code></a></li>
+<li><a class="reference internal" href="#src.database.User.email"><code class="docutils literal notranslate"><span class="pre">User.email</span></code></a></li>
+<li><a class="reference internal" href="#src.database.User.id"><code class="docutils literal notranslate"><span class="pre">User.id</span></code></a></li>
+<li><a class="reference internal" href="#src.database.User.password"><code class="docutils literal notranslate"><span class="pre">User.password</span></code></a></li>
+<li><a class="reference internal" href="#src.database.User.token"><code class="docutils literal notranslate"><span class="pre">User.token</span></code></a></li>
+<li><a class="reference internal" href="#src.database.User.verified"><code class="docutils literal notranslate"><span class="pre">User.verified</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#src.database.get_db"><code class="docutils literal notranslate"><span class="pre">get_db()</span></code></a></li>
+<li><a class="reference internal" href="#src.database.init_db"><code class="docutils literal notranslate"><span class="pre">init_db()</span></code></a></li>
+<li><a class="reference internal" href="#src.database.init_db_once"><code class="docutils literal notranslate"><span class="pre">init_db_once()</span></code></a></li>
+<li><a class="reference internal" href="#src.database.init_engine"><code class="docutils literal notranslate"><span class="pre">init_engine()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#module-src.repository.users">Contacts API repository Users</a><ul>
 <li><a class="reference internal" href="#src.repository.users.avatar"><code class="docutils literal notranslate"><span class="pre">avatar()</span></code></a></li>
 <li><a class="reference internal" href="#src.repository.users.create"><code class="docutils literal notranslate"><span class="pre">create()</span></code></a></li>
 <li><a class="reference internal" href="#src.repository.users.update"><code class="docutils literal notranslate"><span class="pre">update()</span></code></a></li>
 <li><a class="reference internal" href="#src.repository.users.verify"><code class="docutils literal notranslate"><span class="pre">verify()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-src.services.auth">Contacts API service Auth</a><ul>
+<li><a class="reference internal" href="#src.services.auth.Auth"><code class="docutils literal notranslate"><span class="pre">Auth</span></code></a><ul>
+<li><a class="reference internal" href="#src.services.auth.Auth.create_token"><code class="docutils literal notranslate"><span class="pre">Auth.create_token()</span></code></a></li>
+<li><a class="reference internal" href="#src.services.auth.Auth.decode_token"><code class="docutils literal notranslate"><span class="pre">Auth.decode_token()</span></code></a></li>
+<li><a class="reference internal" href="#src.services.auth.Auth.get_current_user"><code class="docutils literal notranslate"><span class="pre">Auth.get_current_user()</span></code></a></li>
+<li><a class="reference internal" href="#src.services.auth.Auth.get_password_hash"><code class="docutils literal notranslate"><span class="pre">Auth.get_password_hash()</span></code></a></li>
+<li><a class="reference internal" href="#src.services.auth.Auth.get_user_by_email"><code class="docutils literal notranslate"><span class="pre">Auth.get_user_by_email()</span></code></a></li>
+<li><a class="reference internal" href="#src.services.auth.Auth.oauth2_scheme"><code class="docutils literal notranslate"><span class="pre">Auth.oauth2_scheme</span></code></a></li>
+<li><a class="reference internal" href="#src.services.auth.Auth.verify_password"><code class="docutils literal notranslate"><span class="pre">Auth.verify_password()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#src.services.auth.Token"><code class="docutils literal notranslate"><span class="pre">Token</span></code></a><ul>
+<li><a class="reference internal" href="#src.services.auth.Token.ACCESS"><code class="docutils literal notranslate"><span class="pre">Token.ACCESS</span></code></a></li>
+<li><a class="reference internal" href="#src.services.auth.Token.REFRESH"><code class="docutils literal notranslate"><span class="pre">Token.REFRESH</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-src.services.email">Contacts API service E-mail</a><ul>
+<li><a class="reference internal" href="#src.services.email.send"><code class="docutils literal notranslate"><span class="pre">send()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-src.services.environment">Contacts API service Environment</a><ul>
+<li><a class="reference internal" href="#src.services.environment.environment"><code class="docutils literal notranslate"><span class="pre">environment()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>

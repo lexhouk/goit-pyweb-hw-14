@@ -1,3 +1,5 @@
+from typing import AsyncGenerator
+
 from fastapi import Depends, HTTPException, status
 from sqlalchemy import Boolean, Date, ForeignKey, Integer, String, text
 from sqlalchemy.exc import OperationalError, SQLAlchemyError
@@ -12,6 +14,11 @@ engine: AsyncEngine = None
 
 
 async def init_engine() -> None:
+    '''
+    Establishing a connection to a particular type of database server and
+    checking its capabilities is done before it is requested.
+    '''
+
     global engine
 
     try:
@@ -29,6 +36,11 @@ async def init_engine() -> None:
 
 
 async def init_db_once() -> None:
+    '''
+    Making all the necessary settings, at the beginning of the application,
+    necessary for working with the database.
+    '''
+
     if not init_db_once.done:
         await init_engine()
         await init_db()
@@ -39,7 +51,20 @@ async def init_db_once() -> None:
 init_db_once.done = False
 
 
-async def get_db(db_init=Depends(init_db_once)):
+async def get_db(
+    db_init=Depends(init_db_once)
+) -> AsyncGenerator[AsyncSession, None]:
+    '''
+    Granting access to a database to execute a single set of queries.
+
+    :param db_init: Setting up the connection to the database.
+    :type db_init: Any
+    :return: A session for working with the database.
+    :rtype: AsyncGenerator[AsyncSession, None]
+
+    :raises HTTPException: If session creation failed.
+    '''
+
     async_session = async_sessionmaker(
         engine,
         class_=AsyncSession,
@@ -109,7 +134,13 @@ class User(Base):
     avatar: Mapped[str] = mapped_column(String(255), nullable=True)
 
 
-async def init_db():
+async def init_db() -> None:
+    '''
+    Creation of tables in the database based on defined entity models.
+
+    :raises HTTPException: If the tables could not be created.
+    '''
+
     try:
         async with engine.begin() as conn:
             await conn.run_sync(Base.metadata.create_all)

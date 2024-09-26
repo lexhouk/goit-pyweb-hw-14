@@ -5,7 +5,8 @@
 ```bash
 $ sphinx-quickstart docs
 $ python -m pip freeze > requirements.txt
-$ ./build.sh
+$ docker compose up -d
+$ docker exec -it lexhouk-hw-14-documentation make -C docs html
 $ cd docs/_build/html
 $ python -m http.server
 ```

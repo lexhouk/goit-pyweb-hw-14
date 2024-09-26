@@ -14,3 +14,12 @@ services:
     container_name: "${PROJECT_NAME}-cache"
     ports:
       - "${REDIS_PORT}:6379"
+
+  doc:
+    build: .
+    container_name: "${PROJECT_NAME}-documentation"
+    volumes:
+      - .:/sphinx
+    working_dir: /sphinx
+    command: /bin/bash -c "make -C docs html && tail -f /dev/null"
+    tty: true

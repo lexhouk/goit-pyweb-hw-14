@@ -17,7 +17,8 @@ async def create(
     :type body: UserRequest
     :param db: Database connection.
     :type db: AsyncSession
-    :return: The part of the created entity that contains the ID and email address.
+    :return: The part of the created entity that contains the ID and email
+        address.
     :rtype: Response
     '''
 
@@ -45,7 +46,8 @@ async def update(
     :type db: AsyncSession
     :param revoke: Indication that the refresh token must be reset.
     :type revoke: bool
-    :return: The access and update token and their type if the entity was successfully updated.
+    :return: The access and update token and their type if the entity was
+        successfully updated.
     :rtype: TokenSchema | None
     '''
 
@@ -87,13 +89,15 @@ async def avatar(email: str, url: str, db: AsyncSession) -> Response:
     '''
     Setting a link to a user's avatar.
 
-    :param email: The e-mail address of the user whose avatar needs to be specified.
+    :param email: The e-mail address of the user whose avatar needs to be
+        specified.
     :type email: str
     :param url: The web address of the image that represents the user's image.
     :type url: str
     :param db: Database connection.
     :type db: AsyncSession
-    :return: The entity of a particular user if the user was successfully found at the specified email address.
+    :return: The entity of a particular user if the user was successfully found
+        at the specified email address.
     :rtype: Response
     '''
 

@@ -17,16 +17,48 @@ documentation for details.
 
 
 Contacts API main
-===================
+=================
 .. automodule:: main
   :members:
   :undoc-members:
   :show-inheritance:
 
 
+Contacts API database
+=====================
+.. automodule:: src.database
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+
 Contacts API repository Users
-======================================
+=============================
 .. automodule:: src.repository.users
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+
+Contacts API service Auth
+=========================
+.. automodule:: src.services.auth
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+
+Contacts API service E-mail
+===========================
+.. automodule:: src.services.email
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
+
+Contacts API service Environment
+================================
+.. automodule:: src.services.environment
   :members:
   :undoc-members:
   :show-inheritance:

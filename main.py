@@ -56,8 +56,13 @@ async def root(db: AsyncSession = Depends(get_db)) -> dict:
 
     :param db: Database connection.
     :type db: AsyncSession
-    :return: Welcome message when ready. Otherwise, an error message is displayed.
+    :return: Welcome message when ready. Otherwise, an error message is
+        displayed.
     :rtype: dict
+
+    :raises HTTPException: If the connection to the database failed due to
+        invalid accesses being provided or for some other reason (for example,
+        the server is not running).
     '''
 
     try:
