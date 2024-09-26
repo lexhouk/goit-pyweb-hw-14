@@ -97,7 +97,7 @@ class TestContacts(IsolatedAsyncioTestCase):
             await read(self.__db, self.user)
 
     @patch('datetime.date.today', wraps=date)
-    async def _test_birthday(self, mock_date) -> None:
+    async def test_birthday(self, mock_date) -> None:
         contacts = [
             Contact(
                 first_name='Jack',
